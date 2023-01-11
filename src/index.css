@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@100;300;400;500;700;900&display=swap');
+*, 
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: "Karla", sans-serif;
+}
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #000000 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 5px;
+    right: 5px;
+    position: absolute;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff00;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border: 3px solid #00000000;
+  }
+
+.App {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+          "editor editor"
+          "previewer previewer";
+
+  width: 90%;
+  margin: 1rem auto;
+}
+
+/* ----------Editor-Section------------ */
+.editor-wrap {
+  grid-area: editor;
+}
+
+textarea {
+  padding: 0.5em;
+  resize: none;
+  height: 90vh;
+  width: 100%;
+
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+
+  background-color: rgb(200, 200,200);
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.editor-toolbar, .preview-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: black;
+  color: white;
+  padding: 0.5em;
+  font-size: 1rem;
+}
+
+.maximizer {
+  transform: rotateZ(45deg);
+  font-size: 1.25rem;
+}
+
+/* -----------Preview-Section----------- */
+.preview-wrap {
+  grid-area: previewer;
+}
+
+#preview {
+  height: 90vh;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+
+  border: 2px solid black;
+
+  overflow-wrap: break-word;
+  overflow-y: scroll;
+}
+
+#preview ul, #preview ol {
+  padding-left: 1.5em;
+}
+
+#preview img {
+  max-width: 90%;
+}
+#preview pre code {
+  white-space: pre-wrap;
+}
+
+@media (min-width: 768px) {
+  .App {
+    grid-template-areas: 
+              "editor previewer"
+              "editor previewer";
+    grid-gap: 10px;
+
+    width: 95%;
+  }
+}
